@@ -233,9 +233,41 @@ newgrp docker	# 更新用户组
 
 3.启动docker
 
-4.配置docker镜像源
+4.配置docker镜像加速器
 
-5.配置docker开机自启动
+```
+# 通过修改daemon配置文件/etc/docker/daemon.json来使用加速器
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://tadg75bn.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+~~5.配置docker开机自启动~~
+
+6.安装docker compose
+
+- [docker-compose](aliyun docker-compose)上传到/usr/local/bin/
+
+- 修改文件权限 
+
+  ```
+  chmod +x /usr/local/bin/docker-compose
+  ```
+
+- Base自动补全命令
+
+  ```
+  # 补全命令
+  curl -L https://raw.githubusercontent.com/docker/compose/1.29.1/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose
+  
+  # 如果这里出现错误，需要修改自己的hosts文件：
+  echo "199.232.68.133 raw.githubusercontent.com" >> /etc/hosts
+  ```
 
 #### ubuntu命令
 
