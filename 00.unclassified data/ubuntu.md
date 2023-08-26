@@ -39,6 +39,18 @@ sudo apt-get install openssh-server
 【启动应用程序】软件
 ```
 
+7.设置每日定时开机、定时关机
+
+```
+# 定时开机
+开机按F10,设置每日自动开机bios
+
+# 定时关机
+sudo vim /etc/crontab
+0 0 * * * root /sbin/shutdown now	# 设定定时任务-每日凌晨自动关机
+sudo /etc/init.d/cron restart	# 使添加内容生效
+```
+
 
 #### ubuntu系统目录及作用
 
@@ -173,6 +185,57 @@ sudo cp systemd/frpc.service /usr/lib/systemd/system/
 sudo systemctl enable frpc	# 开机自启动
 sudo systemctl start frpc	# 启动frpc
 ```
+
+#### ubuntu安装docker
+
+1.安装docker
+
+```
+# 先卸载旧版
+sudo apt-get remove docker docker-engine docker.io containerd runc
+
+# 更新及安装工具软件
+sudo apt-get update
+sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+
+# 安装证书
+curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
+
+# 写入软件源信息
+sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"
+
+# 安装
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+
+# 启动docker
+sudo systemctl start docker
+
+# 安装工具
+sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+
+# 重启docker
+sudo service docker restart
+
+# 查看docker版本 
+docker version
+
+# 查看镜像
+docker images
+
+# 将当前用户加入docker组
+sudo groupadd docker	# 添加docker用户组
+sudo gpasswd -a $USER docker	# 将用户加入到docker用户组
+newgrp docker	# 更新用户组
+```
+
+2.关闭防火墙
+
+3.启动docker
+
+4.配置docker镜像源
+
+5.配置docker开机自启动
 
 #### ubuntu命令
 
