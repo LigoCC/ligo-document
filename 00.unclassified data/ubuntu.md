@@ -274,5 +274,12 @@ sudo systemctl restart docker
 ```
 # 解压文件到指定位置
 tar -zxvf  要解压的文件名  -C 要解压到哪个路径下
+
+# 复制，如果文件存在直接覆盖并且不提示
+cp -nrf testDir destDir
+
+# 制作可执行文件[Install.sh]并执行
+sudo chmod u+x Install.sh	# 赋予该文件权限
+sudo ./Install.sh	# 运行该文件
 ```
 
