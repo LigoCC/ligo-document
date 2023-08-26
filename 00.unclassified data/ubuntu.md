@@ -1,8 +1,10 @@
 #### ubuntu系统安装
 
-1.下载镜像文件及软件(UltralSO)
+1.下载[镜像文件](aliyun ubuntu-22.04.2-desktop-amd64)及[软件(UltralSO)](aliyun uiso9_cn)
 
+2.制作启动盘
 
+3.安装系统
 
 
 #### ubuntu系统目录及作用
