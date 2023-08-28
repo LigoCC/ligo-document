@@ -19,6 +19,6 @@ docker run --env MODE=standalone --name nacos --restart=always  -d -p 8848:8848 
 # docker通过load命令加载为镜像
 sudo docker load -i mysql.tar
 
-
+# docker compose部署mysql
 ```
 
