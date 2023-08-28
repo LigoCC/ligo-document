@@ -192,6 +192,14 @@ sudo systemctl enable frpc	# 开机自启动
 sudo systemctl start frpc	# 启动frpc
 ```
 
+```
+# 新增端口映射后，重启frpc.ini
+sudo rm /etc/frp/frpc.ini
+sudo cp frpc.ini /etc/frp
+sudo systemctl enable frpc
+sudo systemctl start frpc
+```
+
 #### ubuntu安装docker
 
 1.安装docker
