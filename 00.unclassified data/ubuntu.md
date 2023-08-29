@@ -282,7 +282,7 @@ sudo systemctl restart docker
   echo "199.232.68.133 raw.githubusercontent.com" >> /etc/hosts
   ```
 
-安装nginx
+#### 安装nginx
 
 - 上传[nginx-1.16.1.tar.gz](aliyun nginx-1.16.1.tar.gz)到计算机
 
