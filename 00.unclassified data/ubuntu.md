@@ -83,7 +83,7 @@ sudo /etc/init.d/cron restart	# 使添加内容生效
 
 2.部署一个项目运行
 
-#### 配置内网穿透
+#### ubuntu配置内网穿透
 
 1.[下载frp](aliyun frp_0.33.0_linux_amd64)
 
@@ -192,6 +192,8 @@ sudo systemctl enable frpc	# 开机自启动
 sudo systemctl start frpc	# 启动frpc
 ```
 
+##### 修改配置重启frpc生效
+
 ```
 # 新增端口映射后，重启frpc.ini
 sudo rm /etc/frp/frpc.ini
@@ -282,7 +284,7 @@ sudo systemctl restart docker
   echo "199.232.68.133 raw.githubusercontent.com" >> /etc/hosts
   ```
 
-#### 安装nginx
+#### ubuntu安装nginx
 
 - 上传[nginx-1.16.1.tar.gz](aliyun nginx-1.16.1.tar.gz)到计算机
 
