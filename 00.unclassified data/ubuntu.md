@@ -196,8 +196,7 @@ sudo systemctl start frpc	# 启动frpc
 # 新增端口映射后，重启frpc.ini
 sudo rm /etc/frp/frpc.ini
 sudo cp frpc.ini /etc/frp
-sudo systemctl enable frpc
-sudo systemctl start frpc
+sudo systemctl restart frpc
 ```
 
 #### ubuntu安装docker
@@ -281,6 +280,104 @@ sudo systemctl restart docker
   
   # 如果这里出现错误，需要修改自己的hosts文件：
   echo "199.232.68.133 raw.githubusercontent.com" >> /etc/hosts
+  ```
+
+安装nginx
+
+- 上传[nginx-1.16.1.tar.gz](aliyun nginx-1.16.1.tar.gz)到计算机
+
+- 安装
+
+  ```
+  # 解压安装包
+  tar -xvf nginx-1.16.1.tar.gz -C /usr/local/
+  
+  # 进入nginx目录
+  cd /usr/local/nginx-1.16.1
+  
+  # 执行命令
+  ./configure
+  
+  # 执行make命令
+  sudo make
+  
+  # 执行make install命令
+  sudo make install
+  ```
+
+- 启动
+
+  ```
+  # 启动nginx
+  /usr/local/nginx/sbin/nginx -v
+  sudo /usr/local/nginx/sbin/nginx
+  
+  # 默认端口号:80
+  ```
+
+- 配置开机自启动
+
+  ```
+  # 编辑rc.local.service
+  cd /lib/systemd/system/
+  vim rc.local.service
+  # 添加以下配置，保存
+  >>>>>>
+  #  This file is part of systemd.
+  #
+  #  systemd is free software; you can redistribute it and/or modify it
+  #  under the terms of the GNU Lesser General Public License as published by
+  #  the Free Software Foundation; either version 2.1 of the License, or
+  #  (at your option) any later version.
+  
+  # This unit gets pulled automatically into multi-user.target by
+  # systemd-rc-local-generator if /etc/rc.local is executable.
+  [Unit]
+  Description=/etc/rc.local Compatibility
+  ConditionFileIsExecutable=/etc/rc.local
+  After=network.target
+  
+  [Service]
+  Type=forking
+  ExecStart=/etc/rc.local start
+  TimeoutSec=0
+  RemainAfterExit=yes
+  
+  #以下为添加的配置
+  [Install]
+  WantedBy=multi-user.target
+  Alias=rc-local.service
+  <<<<<<
+  
+  # 设置软连接，开机启动查找 /etc/……文件
+  sudo ln -s /lib/systemd/system/rc.local.service /etc/systemd/system/rc.local.service
+  
+  # 修改rc.local
+  vim /etc/rc.local
+  # 添加如下配置
+  >>>>>>
+  #!/bin/sh -e
+  #
+  # rc.local
+  #
+  # This script is executed at the end of each multiuser runlevel.
+  # Make sure that the script will "exit 0" on success or any other
+  # value on error.
+  #
+  # In order to enable or disable this script just change the execution
+  # bits.
+  #
+  # By default this script does nothing.
+  sudo -S /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf << EOF
+  root 你的密码
+  EOF
+  exit 0
+  <<<<<<
+  
+  # 修改权限
+  sudo chmod +x rc.local
+  # 重启
+  sudo reboot now
   ```
 
 #### ubuntu命令
