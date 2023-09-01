@@ -394,5 +394,8 @@ cp -nrf testDir destDir
 # 制作可执行文件[Install.sh]并执行
 sudo chmod u+x Install.sh	# 赋予该文件权限
 sudo ./Install.sh	# 运行该文件
+
+# 重新加载配置
+source /etc/profile
 ```
 
