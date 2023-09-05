@@ -397,5 +397,7 @@ sudo ./Install.sh	# 运行该文件
 
 # 重新加载配置
 source /etc/profile
-```
 
+# 启动记录
+last reboot
+```
