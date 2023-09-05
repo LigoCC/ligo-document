@@ -1,0 +1,43 @@
+ubuntu nginx实现文件共享
+
+1.安装nginx
+
+2.设置nginx开机启动
+
+3.修改配置文件
+3-1.进入nginx配置文件目录
+cd /etc/nginx/conf.d/
+
+3-2.注释默认配置文件
+[root@yejy /etc/nginx/conf.d]# gzip default.conf 
+[root@yejy /etc/nginx/conf.d]# ll default.conf.gz 
+-rw-r--r-- 1 root root 472 Mar 27 17:50 default.conf.gz
+
+3-3.修改
+#创建文件共享目录
+mkdir /ligo_share
+
+#授权共享目录
+chmod 755 -R /ligo_share
+
+#修改配置文件
+[root@yejy /etc/nginx/conf.d]# touch yejy.conf 
+[root@yejy /etc/nginx/conf.d]# cat yejy.conf 
+server {
+    listen 88;
+    server_name ligoshare.com;
+    root /ligo_share/;
+    autoindex on;
+}
+
+3-4.检查语法
+[root@yejy /etc/nginx/conf.d]# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+3-5.重新加载配置文件
+[root@yejy /etc/nginx/conf.d]# systemctl reload nginx
+
+配置完成
+
+4.访问

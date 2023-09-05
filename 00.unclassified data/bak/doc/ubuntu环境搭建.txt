@@ -1,0 +1,82 @@
+===ubuntu命令
+cp 拷贝文件、拷贝目录
+mv 移动文件、移动目录、重命名
+===
+===ubuntu安装jdk1.8
+一、命令行安装jdk1.8
+sudo apt-get update
+sudo apt-get install openjdk-8-jdk
+二、安装包安装jdk1.8
+1、创建jdk安装文件夹
+mkdir java
+将压缩包拷贝到ubuntu系统 usr/local/java中并解压(网上一堆)
+tar -zxvf jdk-8u301-linux-x64.tar.gz
+（或者命令行安装：
+1、更新软件包列表：
+sudo apt update
+2、sudo apt install openjdk-8-jdk
+）
+2、设置环境变量
+作用于所有用户：vim /etc/profile
+在最下方加上以下代码
+export JAVA_HOME=/usr/local/java/jdk1.8
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=.:${JAVA_HOME}/bin:$PATH
+3、使修改的配置立刻生效 source /etc/profile
+4、检查是否安装成功
+java -version
+===
+===utuntu安装tomcat
+1.下载安装包
+2.解压安装包 sudo tar -xvzf apache-tomcat-7.0.85.tar.gz
+3.编辑启动脚本 sudo vi ./bin/startup.sh，在 启动脚本 文件中的 最前面 加这段代码：
+JAVA_HOME=/usr/local/java/jdk1.8.0_171
+JRE_HOME=/usr/local/java/jdk1.8.0_171/jre
+PATH=$JAVA_HOME/bin:$JRE_HOME:$PATH
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+TOMCAT_HOME=/usr/local/tomcat/apache-tomcat-7.0.57
+4.启动 Tomcat:sudo sh ./bin/startup.sh
+  关闭 Tomcat:sudo sh ./bin/shutdown.sh
+  重启 Tomcat:sudo sh ./bin/startup.sh
+===
+===utuntu安装maven
+1.下载 apache-maven-3.5.4-bin.tar.gz
+2.解压 tar zxvf apache-maven-3.5.4-bin.tar.gz
+3./etc/profile下添加环境变量 
+	export MAVEN_HOME=/usr/local/maven/apache-maven-3.5.4
+	export CLASSPATH=${MAVEN_HOME}/lib:$CLASSPATH
+	export PATH=${MAVEN_HOME}/bin:$PATH
+4.终端下输入 source /etc/profile
+5.验证环境变量是否存在 
+	echo $M2_HOME
+	echo $PATH
+6.验证Maven配置是否成功 mvn -v
+
+7.修改本地仓库
+<localRepository>/usr/local/maven/maven_localRepository</localRepository>
+8.更改Maven的中央仓库为aliyun
+<mirrors>
+    <mirror>
+      <id>alimaven</id>
+      <name>aliyun maven</name>
+      <url>https://maven.aliyun.com/repository/public</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+</mirrors>
+===
+===ubuntu安装git
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCHnHAMHfC6Fts+rUmerjtMe0bkBTTpG/LnTjMHnGobEH9+ELYviF30qj9DdsQ+ecGeNf76R099+Y/s0pMjOAuLQIAVrtaTjeN6AmwkM2Fg71uwOwTLn7Q00Ce3Ba2IVXqVJnvKurdHL1X1ymv7mLbfP6xQW4iJn/tINAiKTO9r0VbsRLwMTNApE8SB12fj6s/000Kzcrfb3O8pBQ898In3i8PvY1UqDrVQpQkX+SSbmcga67+0K4zK4sk3r+vXnh/eWeQAR9ErD67Q1ngBDzuPpBaK6v6mUHRtWk2pSyeu7SeDBODM/dSP/BNDrGwveAmOXRcJ0uPtWzoSCN3gKPsRW7uy+K+4D5tNvt7npKqtO2P5CGzMDWxrZnhF/K/Zz5oA+D/Xc52jXtw5Yw40Meb5YQCn4YUJyEBrp+2Kif98S4wUf2dXz8IpaYlqo7kGMDsnLegs+5P3nCxvfbEftkKnqArsOgHHaBvYL+JYsYJ5JOcQWnfFy++Ifa7LWMCRfsc= 1123752904@qq.com
+
+
+===
+
+
+
+
+
+
+
+
+
+

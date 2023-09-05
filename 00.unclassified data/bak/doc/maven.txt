@@ -1,0 +1,10 @@
+>>>>>>>>>>>>>>>
+mvn clean package
+执行clean、resources、compile、testResources、testCompile、test、jar(打包)等７个阶段。
+
+mvn clean install
+执行clean、resources、compile、testResources、testCompile、test、jar(打包)、install等8个阶段。
+
+mvn clean deploy
+执行clean、resources、compile、testResources、testCompile、test、jar(打包)、install、deploy等９个阶段。
+<<<<<<<<<<<<<<<

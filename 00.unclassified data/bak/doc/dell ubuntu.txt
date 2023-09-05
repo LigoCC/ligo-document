@@ -1,0 +1,30 @@
+===[资源][ubuntu][linux]
+本地
+ip:192.168.8.123
+
+公网
+ip:139.9.244.76
+开放端口:
+22              ssh
+6000            ssh ubuntu
+7500            frps管理客户端
+56000-57000     for frp
+
+功能		本地端口	        公网端口
+ssh			22			6000
+ligoshare	88			56088
+mysql		3306        56306
+nacos		8848        56848
+===
+===[装机][步骤]
+1.frp内网穿透
+2.安装docker
+3.安装nginx，配置文件共享
+===
+===[linux部署jar项目][探索]
+1.dockerfile
+2.docker-compose
+3.maven
+4.git
+5.jenkins
+===

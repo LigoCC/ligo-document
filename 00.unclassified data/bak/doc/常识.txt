@@ -1,0 +1,7 @@
+===vo po dto
+vo 表示层，前端展示用
+dto 数据传输层，服务间调用传输数据
+po 持久层，数据库层
+
+View <=vo=> Controller <=dto=> Service <=dto=> Service <=po=> DAO <=po=> JDBC <=po=> DB
+===

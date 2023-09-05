@@ -1,0 +1,43 @@
+IDEA热更新配置
+
+1.  pom.xml
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-devtools</artifactId>
+		<optional>true</optional>
+	</dependency>
+
+2.  IDEA::File -> settings 菜单，打开 settings 页面，
+    在左边的菜单栏依次找到 Build,Execution,Deployment
+    -> Compile，勾选 Build project automatically 。
+
+3.  按住 Ctrl+Shift+Alt+/ 快捷捷键调出 Maintenance 页面，
+    选择 Registry 在新打开的 Registry 页面中，
+    勾选 compiler.automake.allow.when.app.running 和 decompiler.use.line.mapping 选项，
+    不同版本可能没有 compiler.automake.allow.when.app.running 选项, 忽略
+
+4.  手动：修改完代码，按快捷键 Ctrl+F9 手动构建项目，或者只修改单个类文件的话，按 Ctrl+Shift+F9 重新编译该类文件，即可触发重启服务。
+
+===上述热更新不不支持mapper.xml文件更新===
+
+<===mybatis xml热更新
+
+https://github.com/wayn111/mybatis-xmlreload-spring-boot-starter
+
+1. pom.xml
+
+<dependency>
+    <groupId>io.github.wayn111</groupId>
+    <artifactId>mybatis-xmlreload-spring-boot-starter</artifactId>
+</dependency>
+
+2.配置
+# mybatis xml文件热加载配置
+mybatis-xml-reload:
+  # 是否开启 xml 热更新，true开启，false不开启，默认为false
+  enabled: true
+  # xml文件路径，可以填写多个，逗号分隔。
+  # eg: `classpath:mapper/**/*Mapper.xml,classpath*:other/**/*Mapper.xml`
+  mapper-locations: classpath:mapper/*Mapper.xml
+===>
+

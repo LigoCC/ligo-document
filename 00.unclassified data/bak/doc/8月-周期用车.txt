@@ -1,0 +1,233 @@
+===公车申用 周期用车 发起申请
+POST /ent/v1/com/carUse/dispatchApply HTTP/1.1
+jkcgy-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiI3ZGZhYzI1NGZkMzQ0NTMwOTIyNmYxYjY2M2I1MWFkZiIsInJuU3RyIjoiQ2V4SXZtNGRUQjRjN285NlRydjg4R0ZoZ0VMaTFES3YifQ.8JoBzcuDRXJkY8fLMtEs1AglEi6DNXGZf1yXn__s-6Y
+companyId: 2479d815dde14aa7a94918b2c31aaa69
+Content-Type: application/json; charset=UTF-8
+Content-Length: 329
+Host: gateway.jkcgy.com
+Connection: close
+Accept-Encoding: gzip, deflate
+User-Agent: okhttp/4.9.1
+
+{"btime":"2023-08-17 00:00:00","carId":"1661639658922692609","carUseType":3,"ccList":[],"companyId":"2479d815dde14aa7a94918b2c31aaa69","driverId":"6b73853f58694f64892e6209817ac625","duration":0,"etime":"2023-08-18 23:59:59","isBackTracking":0,"operType":0,"population":2,"publicPrivate":0,"reasons":"qqq","roadNature":0,"type":0}
+---
+com_car_use 公车申用表
+---
+===
+===司机 我的出车
+GET /ent/v1/com/carDispatch/listByDriver?companyId=2479d815dde14aa7a94918b2c31aaa69&type=0&current=1&pageSize=30 HTTP/1.1
+jkcgy-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiI2YjczODUzZjU4Njk0ZjY0ODkyZTYyMDk4MTdhYzYyNSIsInJuU3RyIjoiaXJMUkRKZjUwTzBaTUNFd3dVSlRUamg2cUpGZ3lVSGsifQ.rtfFsG6n2-71BqlNlJyWGIKRncGuiEqnOzQX-G6XlT0
+companyId: 2479d815dde14aa7a94918b2c31aaa69
+Host: gateway.jkcgy.com
+Connection: close
+Accept-Encoding: gzip, deflate
+User-Agent: okhttp/4.9.1
+---
+com_car_use_dispatch 出车历史(单)
+---
+===
+===周期用车审批同意
+POST /ent/v1/comFlowSheet/approval HTTP/1.1
+Host: gateway.junkaizhiguan.com
+Accept: */*
+jkcgy-token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiI3NDRjYjJhOTNlZDU0MzBhYmZiM2ZjNjk5ODAxMDI5OSIsInJuU3RyIjoiVVMxZWREdHFXdDg4SHNCMDNGeEF1c0RkNTBYVnYzTmwifQ.FMZDdUYjSvXAYawnPcRugUDG6t6jXw9Bg1pZByIL-2A
+Accept-Language: zh-CN,zh-Hans;q=0.9
+Accept-Encoding: gzip, deflate
+Content-Type: application/json
+Content-Length: 344
+User-Agent: JKIOV/1 CFNetwork/1335.0.3 Darwin/21.6.0
+Connection: close
+companyId: 8b850f96823542868f2e8a91a57e9553
+Cookie: jkcgy-token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiI3NDRjYjJhOTNlZDU0MzBhYmZiM2ZjNjk5ODAxMDI5OSIsInJuU3RyIjoiVVMxZWREdHFXdDg4SHNCMDNGeEF1c0RkNTBYVnYzTmwifQ.FMZDdUYjSvXAYawnPcRugUDG6t6jXw9Bg1pZByIL-2A
+
+cd/W1hsfVMqEAeQmIIwTyfPV19irR0OePhmbqCU9SGZDkQ2whkHGrpTDcxLnrntl42/sOQHgPb/OS9JK0h/9y/zwctTvhlhPdfMCeHDASlH7M1yU0cguAvXc2+DOnTAnqY3bT4Na6HziSWlGv0GHuVmuEkTjgQtsMHT+KdwjKZpVKrCMOPPLHZsXazG08KGY2lEHxdUvZ1jDH0lKYxhXMkLTvrCJm0k8Kp5EiFhGpfoySzwwVc5wUuvbtVdLEqAuyaaHmeC2yED4sIwmKMti0/QNeK3m31hcJbKxI5gH+UQyDlyK2Ai4dGCkO1NOgl1osxLt4MCiVMJS2cxdLgwKwQ==
+
+---
+{"approvalStatus":"1","flowSheetId":"2c93809389ab753d0189b8e471c30040","carUseId":"f0ed164a1ec549dea8f923adca79529b","auditorId":"744cb2a93ed5430abfb3fc6998010299","comment":"同意"}
+---
+===
+===消息，预出车
+待出车任务（陈崇立）	用车审批完成或预出车	司机	出车任务		您有一个【车牌】出车任务请查阅							type 51		您有一个【车牌号】出车任务请查阅
+出车上报（陈崇立）		出车成功				申请人	用车结果		您申请的用车已出车成功，驾驶员【司机】，车牌【车牌号】	type 52		您申请的用车已出车成功，驾驶员【驾驶人姓名】，车牌【车牌号】
+出车上报（陈崇立）		出车成功				司机	用车结果		【车牌】已出车成功										type 53		【车牌号】已出车成功
+收车上报（陈崇立）		收车成功				申请人	用车结果		您申请的用车已结束行程，驾驶员【司机】，车牌【车牌号】	type 54		您申请的用车已结束行程，驾驶员【驾驶人姓名】，车牌【车牌号】
+收车上报（陈崇立）		收车成功				司机	用车结果		【车牌】已收车成功										type 55		【车牌号】已收车成功
+出车任务取消（陈崇立）	出车任务取消			司机	出车任务取消	【车牌】出车任务已取消									type 56		【车牌号】出车任务已取消
+出车任务提醒（陈崇立）	出车任务到时提醒		司机	出车任务取消	您有一个【车牌】出车任务已到时间请尽快出车				type 57		您有一个【车牌号】出车任务已到时间请尽快出车
+
+【申请人姓名】【驾驶人姓名】【车牌号】【预计出发】【预计结束】【当前时间】【企业名称】
+===
+===sql
+UPDATE com_message_template set message = '您有一个【车牌号】出车任务请查阅' where type = '51';
+UPDATE com_message_template set message = '您申请的用车已出车成功，驾驶员【驾驶人姓名】，车牌【车牌号】' where type = '52';
+UPDATE com_message_template set message = '【车牌号】已出车成功' where type = '53';
+UPDATE com_message_template set message = '您申请的用车已结束行程，驾驶员【驾驶人姓名】，车牌【车牌号】' where type = '54';
+UPDATE com_message_template set message = '【车牌号】已收车成功' where type = '55';
+UPDATE com_message_template set message = '【车牌号】出车任务已取消' where type = '56';
+UPDATE com_message_template set message = '您有一个【车牌号】出车任务已到时间请尽快出车' where type = '57';
+
+select type,message,msg_template,push_way from com_message_template where type in('51','52','53','54','55','56','57');
+
+select * from com_dict where data_key in(select msg_template from com_message_template where type in('51','52','53','54','55','56','57'));
+
+UPDATE com_dict SET remarks = '驾驶人姓名,车牌号' WHERE id in ('128','130')
+
+UPDATE com_message_template set push_way = '2' where type in('51','52','53','54','55','56','57');
+===
+======主动安全三期
+===周期用车优化
+1.周期用车提交审批通过后，司机可以启动汽车进行作业，无需货车司机在手机端进行滑动操作；周期用车结束时，无需司机在手机端滑动结束任务，周期用车在时间到期后自动结束任务。并支持周期用车任务进行中的取消功能
+2.在平台增加周期用车的记录信息，包括：记录车辆的打火时间、熄火时间、行驶里程、行驶轨迹、油耗、费用等，并兼容已有用车类型的业务表。
+3.统计报表，在手机端、企业中台、业务中台增加周期用车的报表信息，包含信息车辆的打火时间、熄火时间、行驶里程、行驶轨迹、油耗、费用等。
+===
+===用车类型统计v1/comVehicleTypeStatistics/appPage
+StatStatisticAppQryDTO(
+companyId=8b850f96823542868f2e8a91a57e9553, 
+carId=null, 
+userId=null, 
+deptId=null, 
+startTime=null, 
+endTime=null, 
+year=null, 
+month=2023-08, 
+vehicleType=null, 
+pageNum0=1, pageSize0=6, 
+pageNum1=1, pageSize1=6, 
+pageNum2=1, pageSize2=6, 
+pageNum3=2, pageSize3=6, 
+pageNum4=1, pageSize4=6, 
+pageNum5=1, pageSize5=6, 
+pageNum6=1, pageSize6=6, 
+pageNum7=1, pageSize7=10, 
+pageNum8=1, pageSize8=10, 
+pageNum9=1, pageSize9=10, 
+pageNum10=1, pageSize10=10, 
+reportType=1)
+
+CREATE TABLE `com_vehicle_type_statistics` (
+  `id` varchar(32) NOT NULL COMMENT '主键',
+  `statistics_time` date NOT NULL COMMENT '统计时间（年月日）',
+  `car_id` varchar(50) DEFAULT NULL COMMENT '车辆id',
+  `car_number` varchar(100) NOT NULL COMMENT '车牌号',
+  `company_id` varchar(32) DEFAULT NULL COMMENT '企业ID',
+  `vehicle_type` int DEFAULT '0' COMMENT '车辆类型(0:乘用车 1:客车 2:货车3:专用车4工程车)',
+  `public_private` int DEFAULT '0' COMMENT '是否是公车或者私车;0公车;1私车;默认0;',
+  `ordinary_car_number` int DEFAULT '0' COMMENT '普通用车次数',
+  `plan_car_number` int DEFAULT '0' COMMENT '计划用车次数',
+  `cycle_car_number` int DEFAULT '0' COMMENT '周期用车次数',
+  `many_car_number` int DEFAULT '0' COMMENT '多次用车次数',
+  `cross_city_number` int DEFAULT '0' COMMENT '跨城次数',
+  PRIMARY KEY (`id`),
+  KEY `idx_com_vehicle_type_statistics_time` (`statistics_time`),
+  KEY `idx_com_vehicle_type_statistics_vehicle_type` (`vehicle_type`),
+  KEY `idx_com_vehicle_type_statistics_public_private` (`public_private`),
+  KEY `idx_com_vehicle_type_statistics_company_id` (`company_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC COMMENT='用车类型统计';
+===
+===用车类型统计表单/v1/appStatisticsList/vehicleTypePage
+AppStatisticListDTO(
+companyId=8b850f96823542868f2e8a91a57e9553, 
+carId=null, 
+userId=null, 
+deptId=null, 
+startTime=2023-08-15, 
+endTime=2023-08-15, 
+year=null, 
+month=null, 
+vehicleType=null, 
+reportType=null, 
+current=1, 
+pageSize=100)
+===
+===周期用车统计
+CREATE TABLE `com_car_cycle_use_statistics` (
+  `id` varchar(32) NOT NULL COMMENT '主键',
+  `apply_id` varchar(32) NOT NULL COMMENT '申请单id',
+  `car_use_type` tinyint(1) DEFAULT NULL COMMENT '用车类型',
+  `user_id` varchar(32) NOT NULL COMMENT '发起人id',
+  `user_name` varchar(25) DEFAULT NULL COMMENT '发起人姓名',
+  `driver_id` varchar(32) NOT NULL COMMENT '司机id',
+  `driver_name` varchar(25) DEFAULT NULL COMMENT '司机姓名',
+  `company_id` varchar(32) NOT NULL COMMENT '企业id',
+  `dispatch_id` varchar(32) NOT NULL COMMENT '出车单id',
+  `begin_date` date NOT NULL COMMENT '计划开始时间（年月日）',
+  `end_date` date NOT NULL COMMENT '计划结束时间（年月日）',
+  `dispatch_date` date NOT NULL COMMENT '出车日期（年月日）',
+  `ignite_time` timestamp NULL DEFAULT NULL COMMENT '点火时间',
+  `flameout_time` timestamp NULL DEFAULT NULL COMMENT '熄火时间',
+  `cost` double(10,2) DEFAULT '0.00' COMMENT '费用',
+  `distance` double(10,2) DEFAULT '0.00' COMMENT '行驶里程',
+  `oil_consume` double(10,2) DEFAULT '0.00' COMMENT '油耗',
+  `ignition_duration` bigint DEFAULT NULL COMMENT '点火熄火时长(秒)',
+  `car_id` varchar(32) NOT NULL COMMENT '车辆id',
+  `car_number` varchar(100) DEFAULT '' COMMENT '车牌号',
+  `vehicle_type` int DEFAULT '0' COMMENT '车辆类型(0:乘用车 1:客车 2:货车3:专用车4工程车)',
+  `public_private` int DEFAULT '0' COMMENT '公车或者私车;0公车;1私车;默认0;',
+  `extend` varchar(1000) DEFAULT NULL COMMENT '扩展信息',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `company_id` (`company_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC COMMENT='周期用车统计';
+===
+===
+时间
+车牌号
+	打火熄火时常
+	行驶里程
+	油耗
+	费用
+===
+======
+
+===定时任务，上报地理位置
+配置数据库批量查询
+===
+===app周期用车统计
+http://{{host}}/ent/v1/comCarCycleUse/app/list
+===
+===app周期用车表单统计
+http://{{host}}/ent/v1/comCarCycleUse/app/formList
+===
+===pc周期用车报表
+http://{{host}}/ent/v1/comCarCycleUse/formList
+===
+===pc周期用车报表详情
+http://{{host}}/ent/v1/comCarCycleUse/formListDetails
+===
+=== ===周期用车统计
+===用车类型统计
+/ent/v1/comVehicleTypeStatistics/accumulatedUsage
+companyId=8b850f96823542868f2e8a91a57e9553
+
+/ent/v1/comCar/list
+companyId=8b850f96823542868f2e8a91a57e9553
+
+/ent/v1/comVehicleTypeStatistics/page
+{"companyId":"8b850f96823542868f2e8a91a57e9553","reportType":"0","current":1,"pageSize":10,"startTime":"2023-08-21","endTime":"2023-08-21"}
+===
+===
+/ent/v1/comCarCycleUse/total
+companyId=test123456
+
+/ent/v1/comCarCycleUse/statistics/page
+===
+=== ===
+===轨迹
+1.出车单轨迹 入参为出车单号
+2.详情轨迹 入参为id
+
+com.jkcgy.ent.service.impl.PositionServiceImpl.getLotPosition()
+
+/ent/v1/comCarCycleUse/posit
+===
+===周期用车报表导出
+/ent/v1/comCarCycleUse/formExport
+get
+===
+===周期用车报表详情导出
+/ent/v1/comCarCycleUse/formDetailExport
+get
+===
+===周期用车统计导出
+/ent/v1/comCarCycleUse//statistics/export
+get
+===

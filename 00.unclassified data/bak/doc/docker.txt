@@ -1,0 +1,29 @@
+>>>>>>>>>>>>>>>
+# [docker安装]
+1.安装docker
+2.运行docker前关闭防火墙
+3.配置国内镜像加速服务
+>>>>>>>>>>>>>>>
+
+<<<<<<<<<<<<<<<
+===docker设置开机启动
+systemctl enable docker.service
+===
+===docker关闭开机启动
+systemctl disable docker.service
+===
+===docker容器设置自动启动
+启动时加--restart=always
+docker run -d -p 9090:9090 --restart=always --name mytomcat tomcat
+如果已经过运行的项目
+如果容器启动时没有设置，则通过update命令进行更新。
+docker update --restart=always 容器名或者id
+取消容器开机自启
+docker update --restart=no 容器名或id
+===
+===docker安装redis
+docker run --restart=always -p 6379:6379 --name myredis -d redis:latest  --requirepass 123456
+===
+===docker运行jar包
+https://blog.csdn.net/weixin_42054155/article/details/90815393?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169208857716777224497396%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=169208857716777224497396&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~hot_rank-8-90815393-null-null.142^v92^chatsearchT3_1&utm_term=docker%E9%83%A8%E7%BD%B2jar%E5%8C%85&spm=1018.2226.3001.4187
+===

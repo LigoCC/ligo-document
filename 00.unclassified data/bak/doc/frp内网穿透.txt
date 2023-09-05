@@ -1,0 +1,118 @@
+===frp安装配置===
+https://blog.csdn.net/weixin_43922901/article/details/109261700?ops_request_misc=&request_id=&biz_id=102&utm_term=frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-7-109261700.142^v83^insert_down1,239^v2^insert_chatgpt&spm=1018.2226.3001.4187
+
+1.下载frp_0.33.0_linux_amd64.tar.gz
+
+2.服务端
+2-1.解压frp压缩包
+	tar -zxvf frp_0.33.0_linux_amd64.tar.gz
+2-2.cd frp_0.33.0_linux_amd64/
+2-3.vi frps.ini
+2-4.配置如下
+	[common]
+	# frp监听的端口，默认是7000，可以改成其他的
+	bind_port = 7000
+	# 授权码，请改成更复杂的
+	token = 52010  # 这个token之后在客户端会用到
+
+	# frp管理后台端口，请按自己需求更改
+	dashboard_port = 7500
+	# frp管理后台用户名和密码，请改成自己的
+	dashboard_user = admin
+	dashboard_pwd = admin
+	enable_prometheus = true
+
+	# frp日志配置
+	log_file = /var/log/frps.log
+	log_level = info
+	log_max_days = 3
+2-5.设置和启动frp服务
+	sudo mkdir -p /etc/frp
+	sudo cp frps.ini /etc/frp
+	sudo cp frps /usr/bin
+	sudo cp systemd/frps.service /usr/lib/systemd/system/
+	sudo systemctl enable frps
+	sudo systemctl start frps
+2-6.防火墙开放端口
+	# 添加监听端口
+	sudo firewall-cmd --permanent --add-port=7000/tcp
+	# 添加管理后台端口
+	sudo firewall-cmd --permanent --add-port=7500/tcp
+	sudo firewall-cmd --reload
+2-7.验证服务端是否启动成功
+	访问：http://服务器IP:后台管理端口” ，输入用户名和密码可以查看连接状态
+
+3.客户端
+3-1.解压frp压缩包
+	tar -zxvf frp_0.33.0_linux_amd64.tar.gz
+3-2.cd frp_0.33.0_linux_amd64/
+3-3.vi frpc.ini
+3-4.配置如下
+	# 客户端配置
+	[common]
+	server_addr = 服务器ip
+	 # 与frps.ini的bind_port一致
+	server_port = 7000
+	 # 与frps.ini的token一致
+	token = 52010
+
+	# 配置ssh服务
+	[ssh]
+	type = tcp
+	local_ip = 127.0.0.1
+	local_port = 22
+	 # 这个自定义，之后再ssh连接的时候要用
+	remote_port = 6000 
+
+    [redis]
+    type = tcp
+    local_ip = 127.0.0.1
+    local_port = 6379
+    remote_port = 56379
+
+	# 配置http服务，可用于小程序开发、远程调试等，如果没有可以不写下面的
+	[web]
+	type = http
+	local_ip = 127.0.0.1
+	local_port = 8080
+	# web域名
+	subdomain = test.hijk.pw
+	# 自定义的远程服务器端口，例如8080
+	remote_port = 8080
+3-5.防火墙开放端口
+	sudo firewall-cmd --permanent --add-port=6000/tcp
+	sudo firewall-cmd --permanent --add-port=8080/tcp
+	sudo firewall-cmd --reload
+===自动启动 frp 服务===
+1.使用systemctl新建frp.service文件
+sudo nano /lib/systemd/system/frp.service
+
+2.写入以下内容，注意区分服务端和客户端
+    [Unit]
+    Description=frp service
+    After=network.target syslog.target
+    Wants=network.target
+    [Service]
+    Type=simple
+    # 服务端（以/home/ligo/frp_0.33.0_linux_amd64为例）
+    ExecStart=/home/ligo/frp_0.33.0_linux_amd64/frps -c /home/ubuntu/frp/frps.ini
+    # 客户端（以/home/ligo/frp_0.33.0_linux_amd64为例）
+    # ExecStart=/home/ligo/frp_0.33.0_linux_amd64/frpc -c /root/frp/frpc.ini
+    User=root
+    Restart=on-failure
+    RestartSec=5s
+    LimitNOFILE=1048576
+    [Install]
+    WantedBy=multi-user.target
+    使用 systemctl 启动服务
+
+    # 启动frp
+    sudo systemctl start frp
+    # 开机自启动
+    sudo systemctl enable frp
+    # 重启
+    sudo systemctl restart frp
+    # 停止
+    sudo systemctl stop frp
+    # 查看日志
+    sudo systemctl status frp
