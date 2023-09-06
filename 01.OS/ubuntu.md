@@ -400,4 +400,12 @@ source /etc/profile
 
 # 启动记录
 last reboot
+
+source /etc/profile
+
+sudo apt-get update
+
+sudo apt install tree
+
+tar -zxvf apache-maven-3.8.4-bin.tar.gz -C /home/package/
 ```

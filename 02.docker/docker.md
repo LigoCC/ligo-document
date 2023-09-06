@@ -16,3 +16,24 @@ https://blog.csdn.net/Jerry00713/article/details/108318950?ops_request_misc=&req
 	3.1 docker tag hello-world:latest cloud-linux.ip:registry.port/hello-world:latest
 	3.2 docker push cloud-linux.ip:registry.port/hello-world:latest
 	3.2 docker pull cloud-linux.ip:registry.port/hello-world:latest
+
+#### docker命令
+
+```
+# registry推送、拉取镜像
+docker tag hello-world:latest registry.ip:registry.port/hello-world:latest
+docker push registry.ip:registry.port/hello-world:latest
+docker pull registry.ip:registry.port/hello-world:latest
+
+# dockfile制作镜像
+docker build -t 镜像名:版本号 dockerfile文件夹路径
+# 当dockerfile在当前目录下时
+docker build -t 镜像名:版本号 .
+
+# docker-compose启动
+docker-compose up -d
+
+# docker通过load命令加载为镜像
+docker load -i mysql.tar
+```
+
