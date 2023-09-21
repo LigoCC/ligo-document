@@ -409,4 +409,7 @@ sudo apt-get update
 sudo apt install tree
 
 tar -zxvf apache-maven-3.8.4-bin.tar.gz -C /home/package/
+
+# 查看系统日志
+journalctl -xe
 ```
