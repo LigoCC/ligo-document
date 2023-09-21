@@ -48,6 +48,7 @@ sudo apt-get install openssh-server
 # 定时关机
 sudo vim /etc/crontab
 0 0 * * * root /sbin/shutdown now	# 设定定时任务-每日凌晨自动关机
+0 0 * * * root /sbin/reboot now	# 设定定时任务-每日凌晨自动重启
 sudo /etc/init.d/cron restart	# 使添加内容生效
 ```
 
