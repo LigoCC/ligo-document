@@ -6,7 +6,8 @@ adb version
 
 adb devices
 
-// 电脑-安卓设备数据线连接，安卓设备开启usb调试
+// 1.电脑-安卓设备数据线连接，安卓设备开启usb调试
+// 2.电脑开启无线网络共享，安卓设备连接此无线网络
 
 // 进入Android系统（基于Linux）的shell
 adb shell
@@ -17,7 +18,7 @@ adb shell
 // 让设备在 5555 端口监听 TCP/IP 连接
 adb tcpip 5555
 
-// 连接指定的ip设备
+// 连接安卓设备（eg：设备ip为192.168.8.134）
 adb connect 192.168.8.134
 
 adb devices
