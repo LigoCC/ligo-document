@@ -1,0 +1,20 @@
+```
+参考教程：https://blog.csdn.net/m0_56144365/article/details/125725610?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522169665851116800211560382%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=169665851116800211560382&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-125725610-null-null.142^v95^insert_down1&utm_term=%E5%AE%89%E5%8D%93%E6%97%A0%E7%BA%BF%E8%B0%83%E8%AF%95&spm=1018.2226.3001.4187
+```
+
+adb version
+
+adb devices
+
+// 电脑-安卓设备数据线连接，安卓设备开启usb调试
+
+// 进入Android系统（基于Linux）的shell
+adb shell
+	// 设置adb服务端口为5555， 打开adb网络调试功能
+	setprop service.adb.tcp.port 5555
+	exit
+
+// 让设备在 5555 端口监听 TCP/IP 连接
+adb tcpip 5555
+
+adb devices
