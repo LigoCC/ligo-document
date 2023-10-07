@@ -17,4 +17,7 @@ adb shell
 // 让设备在 5555 端口监听 TCP/IP 连接
 adb tcpip 5555
 
+// 连接指定的ip设备
+adb connect 192.168.8.134
+
 adb devices
